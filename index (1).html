@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browser</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="tabs"><button id="plus" type="button" aria-label="New tab" title="New tab">+</button></div>
+
+<form id="toolbar" autocomplete="off">
+  <button type="button" class="nav" id="back" aria-label="Back" title="Back">←</button>
+  <button type="button" class="nav" id="fwd" aria-label="Forward" title="Forward">→</button>
+  <button type="button" class="nav" id="reload" aria-label="Reload" title="Reload">⟳</button>
+  <div id="bar">
+    <select id="engine" aria-label="Default search engine"></select>
+    <input id="q" type="text" spellcheck="false" autocapitalize="off" placeholder="Search or type an address" aria-label="Address bar">
+  </div>
+  <button type="button" class="nav" id="gear" aria-label="Search engine settings" title="Search engines">⚙</button>
+</form>
+
+<div id="embedNote" hidden>
+  If the page stays blank, that site doesn’t allow being embedded.
+  <a id="newTabLink" href="#" target="_blank" rel="noopener noreferrer">Open it in a new tab ↗</a>
+</div>
+
+<div id="view">
+  <div class="panel" id="home" hidden><div class="inner">
+    <h1>Type an address or a search.</h1>
+    <p id="homeHint"></p>
+  </div></div>
+
+  <div class="panel" id="results" hidden><div class="inner">
+    <h1 id="rTitle"></h1>
+    <p id="rMsg"></p>
+    <ul id="rList"></ul>
+  </div></div>
+
+  <div class="panel" id="fail" hidden><div class="inner">
+    <h1>This page didn’t load.</h1>
+    <p id="failMsg"></p>
+  </div></div>
+
+  <div class="panel" id="settings" hidden><div class="inner">
+    <div class="top"><h1>Search engines</h1><button type="button" class="link" id="closeSettings">Done</button></div>
+    <p>Pick the default in the address bar. Type a keyword, a space, then your query to use any engine once: <kbd>g cats</kbd></p>
+    <h2>Available</h2>
+    <ul id="engines"></ul>
+    <h2>Add a search engine</h2>
+    <form class="add" id="add" autocomplete="off">
+      <label>Name<input id="nName" placeholder="YouTube" required></label>
+      <label>Keyword<input id="nKw" placeholder="yt" maxlength="12" required></label>
+      <label class="wide">Search URL (put {searchTerms} where the query goes)
+        <input id="nUrl" placeholder="https://www.youtube.com/results?search_query={searchTerms}" required></label>
+      <div id="err" role="alert"></div>
+      <button type="submit">Add engine</button>
+    </form>
+  </div></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
